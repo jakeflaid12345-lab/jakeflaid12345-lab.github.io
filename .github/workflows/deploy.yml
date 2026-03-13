@@ -11,15 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'pnpm'
       
       - name: Install dependencies
-        run: cd b_8lC3h3WNJJc-1773431457260 && npm install
+        run: cd b_8lC3h3WNJJc-1773431457260 && pnpm install
       
       - name: Build Next.js
-        run: cd b_8lC3h3WNJJc-1773431457260 && npm run build
+        run: cd b_8lC3h3WNJJc-1773431457260 && pnpm run build
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
